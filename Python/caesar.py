@@ -1,19 +1,23 @@
 #!/usr/bin/env python3
 
-#Caesar Cipher
+# Caesar Cipher
 
 from nltk.corpus import words
-#from nltk.corpus import wordnet
+from nltk.corpus import wordnet
+from nltk import word_tokenize
 
-#manywords = words.words().append(wordnet.words())
 
 def encrypt(msg, key):
 
-    if msg == None:
+    if msg is None:
         return None
 
     size = len(msg)
     encrypted_msg = ''
+
+    if key > 26 :
+        key = key % 26
+        key = key - 26
 
     for i in range(size):
         if (msg[i]) is ' ':
@@ -21,12 +25,12 @@ def encrypt(msg, key):
             continue
         character = ord(msg[i])
 
-        #Check for capital letters
+        # Check for capital letters
         if character <= 90 and (character + key > 90):
             letter = chr(character + key - 26)
-        elif character >=65 and character <=90 and (character + key < 65):
+        elif character >= 65 and character <= 90 and (character + key < 65):
             letter = chr(character + key + 26)
-        #Check for small letters
+        # Check for small letters
         elif character >= 97 and character <= 122 and (character + key > 122):
             letter = chr(character + key - 26)
         elif character >= 97 and character <= 122 and (character + key < 97):
@@ -38,18 +42,24 @@ def encrypt(msg, key):
 
     return encrypted_msg
 
+
 def decrypt(msg):
 
-    if msg == None:
+    if msg is None:
         return None
 
+    wordnet_list = []
+    for s in wordnet.all_synsets():
+        wordnet_list.append(str(s).split('.')[0][8:])
+    whole_list = wordnet_list + words.words()
+
     final_key = 0
-    length = len(msg.split(' '))
+    length = len(word_tokenize(msg))
     count = 0
 
     for key in range(26):
-        for word in msg.split(' '):
-            if words.words().__contains__(encrypt(word, key)) is False:
+        for word in word_tokenize(msg):
+            if whole_list.__contains__(encrypt(word, key)) is False:
                 continue
             else:
                 count = count+1
@@ -60,11 +70,13 @@ def decrypt(msg):
 
     return encrypt(msg, final_key)
 
+
 if __name__ == '__main__':
     print('Enter 1 to encrypt')
     print('Enter 2 to decrypt with key')
     print('Enter 3 to decrypt without key')
     n = int(input())
+
     if n == 1:
         string = input('Enter sentence to encrypt ')
         key = int(input('Enter key to encrypt with '))
@@ -81,5 +93,3 @@ if __name__ == '__main__':
 
     else:
         print('Wrong input')
-
-
