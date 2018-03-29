@@ -60,26 +60,26 @@ def decrypt(msg):
 
     return encrypt(msg, final_key)
 
-print('Enter 1 to encrypt')
-print('Enter 2 to decrypt with key')
-print('Enter 3 to decrypt without key')
-n = int(input())
-if n == 1:
-    string = input('Enter sentence to encrypt ')
-    key = int(input('Enter key to encrypt with '))
-    print('Encrypted string is - {0}'.format(encrypt(string, key)))
+if __name__ == '__main__':
+    print('Enter 1 to encrypt')
+    print('Enter 2 to decrypt with key')
+    print('Enter 3 to decrypt without key')
+    n = int(input())
+    if n == 1:
+        string = input('Enter sentence to encrypt ')
+        key = int(input('Enter key to encrypt with '))
+        print('Encrypted string is - {0}'.format(encrypt(string, key)))
 
-elif n == 2:
-    string = input('Enter sentence to decrypt ')
-    key = int(input('Enter key to decrypt with '))
-    print('Decrypted string is - {0}'.format(encrypt(string, -key)))
+    elif n == 2:
+        string = input('Enter sentence to decrypt ')
+        key = int(input('Enter key to decrypt with '))
+        print('Decrypted string is - {0}'.format(encrypt(string, -key)))
 
-elif n == 3:
-    string = input('Enter sentence to decrypt ')
-    print('Decrypted string is - {0}'.format(decrypt(string)))
+    elif n == 3:
+        string = input('Enter sentence to decrypt ')
+        print('Decrypted string is - {0}'.format(decrypt(string)))
 
-else:
-    print('Wrong input')
-
+    else:
+        print('Wrong input')
 
 
