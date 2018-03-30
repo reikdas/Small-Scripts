@@ -11,6 +11,8 @@ for s in wordnet.all_synsets():
     wordnet_list.append(str(s).split('.')[0][8:])
 whole_list = wordnet_list + words.words()
 
+whole_list_small = [x.lower() for x in whole_list]
+whole_list_big = [x.upper() for x in whole_list]
 
 def encrypt(msg, key):
 
@@ -61,10 +63,13 @@ def decrypt(msg):
 
     for key in range(26):
         for word in word_tokenize(msg):
-            if whole_list.__contains__(encrypt(word, key)) is False:
-                continue
-            else:
-                count = count+1
+            if whole_list.__contains__(encrypt(word, key)) is True:
+                count = count + 1
+            elif whole_list_big.__contains__(encrypt(word, key)) is True:
+                count = count + 1
+            elif whole_list_small.__contains__(encrypt(word, key)) is True:
+                count = count + 1
+
         if count == length:
             final_key = key
             break
