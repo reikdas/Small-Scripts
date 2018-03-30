@@ -1,8 +1,11 @@
 #!/usr/bin/env python3
 
 import unittest
+
+# Imports for caesar.py tests
 from Python.caesar import decrypt
 from Python.caesar import encrypt
+
 
 # Unit Tests for caesar.py
 class CaesarTest(unittest.TestCase):

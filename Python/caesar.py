@@ -6,6 +6,11 @@ from nltk.corpus import words
 from nltk.corpus import wordnet
 from nltk import word_tokenize
 
+wordnet_list = []
+for s in wordnet.all_synsets():
+    wordnet_list.append(str(s).split('.')[0][8:])
+whole_list = wordnet_list + words.words()
+
 
 def encrypt(msg, key):
 
@@ -15,14 +20,16 @@ def encrypt(msg, key):
     size = len(msg)
     encrypted_msg = ''
 
-    if key > 26 :
+    if key > 26:
         key = key % 26
         key = key - 26
 
     for i in range(size):
-        if (msg[i]) is ' ':
-            encrypted_msg = encrypted_msg + ' '
+
+        if msg[i].isalpha() is False:
+            encrypted_msg = encrypted_msg + msg[i]
             continue
+
         character = ord(msg[i])
 
         # Check for capital letters
@@ -47,11 +54,6 @@ def decrypt(msg):
 
     if msg is None:
         return None
-
-    wordnet_list = []
-    for s in wordnet.all_synsets():
-        wordnet_list.append(str(s).split('.')[0][8:])
-    whole_list = wordnet_list + words.words()
 
     final_key = 0
     length = len(word_tokenize(msg))
