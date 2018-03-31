@@ -3,8 +3,8 @@
 import unittest
 
 # Imports for caesar.py tests
-from Python.caesar import decrypt
-from Python.caesar import encrypt
+from caesar import decrypt
+from caesar import encrypt
 
 
 # Unit Tests for caesar.py
