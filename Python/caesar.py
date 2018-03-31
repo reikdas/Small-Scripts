@@ -6,7 +6,7 @@ from nltk import word_tokenize
 
 f = open('words.txt', 'r', errors='ignore')
 whole_list = f.readline().split()
-f.close()
+f.close() 
 
 whole_list_small = [x.lower() for x in whole_list]
 whole_list_big = [x.upper() for x in whole_list]
