@@ -2,24 +2,14 @@
 
 # Caesar Cipher
 
-from nltk.corpus import words
-from nltk.corpus import wordnet
 from nltk import word_tokenize
 
-wordnet_list = []
-for s in wordnet.all_synsets():
-    wordnet_list.append(str(s).split('.')[0][8:])
-whole_list = wordnet_list + words.words()
-
 f = open('words.txt', 'r', errors='ignore')
-whole_list += f.readline().split()
-f.close()
-
-whole_list = list(set(whole_list))
+whole_list = f.readline().split()
+f.close() 
 
 whole_list_small = [x.lower() for x in whole_list]
 whole_list_big = [x.upper() for x in whole_list]
-
 
 def encrypt(msg, key):
 
