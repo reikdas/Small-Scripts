@@ -13,6 +13,6 @@ before-script:
   - pip install --upgrade nltk
 
 script:
-  python3 Python/tests.py
+  python3 tests.py
 
 
