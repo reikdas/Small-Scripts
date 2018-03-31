@@ -1,16 +1,12 @@
 language: python
 
-os:
-  - linux
-
 python:
   - 3.4
   - 3.5
   - 3.6
 
-before-script:
-  - pip install --upgrade pip
-  - pip install --upgrade nltk
+install:
+  - pip install nltk
 
 script:
   python3 tests.py
