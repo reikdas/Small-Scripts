@@ -10,8 +10,8 @@ from caesar import encrypt
 # Unit Tests for caesar.py
 class CaesarTest(unittest.TestCase):
 
-    def test_decrypt(self):
-        self.assertEqual('I am a good boy', decrypt('N fr f ltti gtd'))
+    def test_decrypt_key(self):
+        self.assertEqual('I am a good boy', encrypt('L dp d jrrg erb',-3))
 
     def test_encrypt(self):
         self.assertEqual('L dp d jrrg erb', encrypt('I am a good boy', 3))
