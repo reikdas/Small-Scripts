@@ -80,7 +80,7 @@ public class CommonFriendsDriver {
     }
     public static void main(String[] args) throws Exception{
         Configuration conf=new Configuration();
-        String[] otherArgs=new String[]{"/input/CommonFriends.txt","output"};
+        String[] otherArgs=new String[]{"/input/CommonFriends.txt","/output"};
         if(otherArgs.length!=2){
             System.err.println("entry error");
             System.exit(2);
